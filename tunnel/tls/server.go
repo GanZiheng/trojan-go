@@ -102,7 +102,7 @@ func (s *Server) acceptLoop() {
 						}
 					}
 					if s.verifySNI && !matched {
-						return nil, common.NewError("sni mismatched: " + hello.ServerName + ", expected: " + s.sni)
+						log.Warnf("sni mismatched: %s, expected: %s", hello.ServerName, s.sni)
 					}
 					return &s.keyPair[0], nil
 				},
